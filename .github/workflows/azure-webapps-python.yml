@@ -49,8 +49,12 @@ jobs:
           python -m venv venv
           source venv/bin/activate
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Install ChromeDriver
+        run: |
+          wget https://storage.googleapis.com/chrome-for-testing-public/126.0.6472.0/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -62,6 +66,9 @@ jobs:
             .
             !venv/
 
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+    
   deploy:
     permissions:
       contents: none

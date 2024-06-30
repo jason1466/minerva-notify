@@ -82,14 +82,14 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 
-      - name: Install dependencies
-        run: |
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
-          sudo apt-get update
-          sudo apt-get install -y libglib2.0-0
-          sudo apt install libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y libglib2.0-0
+      #     sudo apt install libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
 
+        # sudo mv chromedriver /usr/local/bin/
+        # sudo chmod +x /usr/local/bin/chromedriver
         # wget https://storage.googleapis.com/chrome-for-testing-public/126.0.6472.0/chromedriver_linux64.zip
         # unzip chromedriver_linux64.zip
         # sudo apt install libnss
@@ -98,6 +98,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install webdriver-manager
 
       - name: Post-deployment script
         run: |

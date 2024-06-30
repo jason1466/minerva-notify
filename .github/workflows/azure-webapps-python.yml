@@ -84,6 +84,17 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # wget https://storage.googleapis.com/chrome-for-testing-public/126.0.6472.0/chromedriver_linux64.zip
+          # unzip chromedriver_linux64.zip
+          mv chromedriver /usr/local/bin/
+          chmod +x /usr/local/bin/chromedriver
+          apt-get update
+          apt-get install -y libglib2.0-0
+          apt install libnss
+          # apt install libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
+    
+      - name: Install Python packages
+        run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 

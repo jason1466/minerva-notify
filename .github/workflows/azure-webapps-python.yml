@@ -90,5 +90,4 @@ jobs:
       - name: Post-deployment script
         run: |
           echo "Running post-deployment script..."
-          # Example: Restart the web app
-          az webapp restart --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group <your-resource-group>
+          ls -la

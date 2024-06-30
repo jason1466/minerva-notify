@@ -23,7 +23,7 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 
-service = Service(executable_path='/usr/local/bin/chromedriver')
+service = Service(executable_path='./chromedriver')
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 def login(username, password):

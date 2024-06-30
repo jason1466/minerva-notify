@@ -84,11 +84,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          mv chromedriver /usr/local/bin/
-          chmod +x /usr/local/bin/chromedriver
-          apt-get update
-          apt-get install -y libglib2.0-0
-          apt install libnss
+          sudo mv chromedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
+          sudo apt-get update
+          sudo apt-get install -y libglib2.0-0
+          sudo apt install libnss
 
         # wget https://storage.googleapis.com/chrome-for-testing-public/126.0.6472.0/chromedriver_linux64.zip
         # unzip chromedriver_linux64.zip

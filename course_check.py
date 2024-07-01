@@ -22,14 +22,21 @@ logout_url = "https://horizon.mcgill.ca/pban1/twbkwbis.P_Logout"
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--window-size=1920x1080")
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-chrome_options.add_argument('--disable-gpu')
-chrome_options.add_argument('--remote-debugging-port=9222')
+chrome_options.add_argument("--window-size=1920x1080")
 
-service = Service(ChromeDriverManager().install())
+service = Service(executable_path='/usr/local/bin/chromedriver')
 driver = webdriver.Chrome(service=service, options=chrome_options)
+
+# chrome_options = Options()
+# chrome_options.add_argument("--headless")
+# # chrome_options.add_argument("--window-size=1920x1080")
+# chrome_options.add_argument('--no-sandbox')
+# chrome_options.add_argument('--disable-dev-shm-usage')
+# chrome_options.add_argument('--disable-gpu')
+# chrome_options.add_argument('--remote-debugging-port=9222')
+
+# service = Service(ChromeDriverManager().install())
+# driver = webdriver.Chrome(service=service, options=chrome_options)
 
 def login(username, password):
     #get login page
@@ -78,8 +85,8 @@ def check_availability(course, crn, term="Fall 2024", dept="MGCR"):
     select = Select(driver.find_element(By.NAME, "p_term"))
 
     print("Checking --> ")
-    print(dept, " ", course, ": ",crn)
-    print("   ")
+    print(dept, course, ":",crn)
+    # print("   ")
 
     select.select_by_visible_text(term)
 
@@ -108,12 +115,16 @@ def check_availability(course, crn, term="Fall 2024", dept="MGCR"):
 
     rows = driver.find_elements(By.TAG_NAME, "tr")
     info_dict = {}
+    # print("check_availability() crn: ",crn)
     for row in rows:
+        # print("row.text: ",row.text)
         if crn in row.text:
+            # print("crn match - row.text: ",row.text)
             #get info from data row
             rem = row.find_elements(By.TAG_NAME, "td")[12].text
             rem_wait = row.find_elements(By.TAG_NAME, "td")[15].text
             status = row.find_elements(By.TAG_NAME, "td")[19].text
+            # print("check_availability() rem: ",rem," rem_wait: ",rem_wait," status: ",status)
             info_dict["spots"] = rem
             info_dict["wait_spots"] = rem_wait
             info_dict["status"] = status

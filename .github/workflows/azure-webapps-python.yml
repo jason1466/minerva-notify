@@ -94,35 +94,34 @@ jobs:
         # unzip chromedriver_linux64.zip
         # sudo apt install libnss
 
-      - name: Install Google Chrome and Chromedriver
-        run: |
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-          wget -N https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chromedriver-linux64.zip
-          unzip chromedriver-linux64.zip
-          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
-          google-chrome --version
-          chromedriver --version
-          echo "export CHROME_BINARY_PATH=/usr/bin/google-chrome" >> ~/.bashrc
-          echo "export CHROMEDRIVER_PATH=/usr/local/bin/chromedriver" >> ~/.bashrc
-          source ~/.bashrc
+      # - name: Install Google Chrome and Chromedriver
+      #   run: |
+      #     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+      #     sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+      #     sudo apt-get update
+      #     sudo apt-get install -y google-chrome-stable
+      #     CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+      #     wget -N https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chromedriver-linux64.zip
+      #     unzip chromedriver-linux64.zip
+      #     sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+      #     sudo chmod +x /usr/local/bin/chromedriver
+      #     google-chrome --version
+      #     chromedriver --version
+      #     echo "export CHROME_BINARY_PATH=/usr/bin/google-chrome" >> ~/.bashrc
+      #     echo "export CHROMEDRIVER_PATH=/usr/local/bin/chromedriver" >> ~/.bashrc
+      #     source ~/.bashrc
 
         # sudo apt-get install -y xvfb
         # Xvfb :99 -screen 0 1920x1080x24 &
         # export DISPLAY=:99
 
-      - name: Install Python packages
-        run: |
-          sudo python -m pip install --upgrade pip
-          sudo pip install -r requirements.txt
-          sudo pip install webdriver-manager
+      # - name: Install Python packages
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install -r requirements.txt
+      #     pip install webdriver-manager
 
-      - name: Post-deployment script
-        run: |
-          echo "Running post-deployment script..."
-          ls -la
+      # - name: Post-deployment script
+      #   run: |
+      #     echo "Running post-deployment script..."
+      #     ls -la

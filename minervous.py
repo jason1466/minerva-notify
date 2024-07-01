@@ -26,10 +26,7 @@ class Course:
         self.wl_spots = None
 
     def __str__(self):
-        return f"{self.department.upper()} {self.course_number.strip()} in \
-            {self.term.strip()}, status is {self.status} and has \
-                {self.spots.strip()} spots open \
-                {self.wl_spots.strip()} waitlist spots open"
+        return f"{self.department.upper()} {self.course_number.strip()} in {self.term.strip()}, status is {self.status} and has {self.spots.strip()} spots open {self.wl_spots.strip()} waitlist spots open"
 
 def cline():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)

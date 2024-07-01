@@ -20,23 +20,24 @@ search_url = "https://horizon.mcgill.ca/pban1/bwskfcls.P_GetCrse"
 login_url = "https://horizon.mcgill.ca/pban1/twbkwbis.P_ValLogin"
 logout_url = "https://horizon.mcgill.ca/pban1/twbkwbis.P_Logout"
 
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--window-size=1920x1080")
-
-service = Service(executable_path='/usr/local/bin/chromedriver')
-driver = webdriver.Chrome(service=service, options=chrome_options)
-
 # chrome_options = Options()
 # chrome_options.add_argument("--headless")
-# # chrome_options.add_argument("--window-size=1920x1080")
-# chrome_options.add_argument('--no-sandbox')
-# chrome_options.add_argument('--disable-dev-shm-usage')
-# chrome_options.add_argument('--disable-gpu')
-# chrome_options.add_argument('--remote-debugging-port=9222')
+# chrome_options.add_argument("--window-size=1920x1080")
+
+# service = Service(executable_path='/usr/local/bin/chromedriver')
+# driver = webdriver.Chrome(service=service, options=chrome_options)
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--window-size=1920x1080")
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--remote-debugging-port=9222')
 
 # service = Service(ChromeDriverManager().install())
-# driver = webdriver.Chrome(service=service, options=chrome_options)
+service = Service(executable_path='/usr/local/bin/chromedriver')
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 def login(username, password):
     #get login page

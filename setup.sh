@@ -5,11 +5,11 @@ apt-get install -y google-chrome-stable
 CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
 mv chromedriver-linux64/chromedriver /usr/local/bin/
 chmod +x /usr/local/bin/chromedriver
-google-chrome --version
-chromedriver --version
 echo "export CHROME_BINARY_PATH=/usr/bin/google-chrome" >> ~/.bashrc
 echo "export CHROMEDRIVER_PATH=/usr/local/bin/chromedriver" >> ~/.bashrc
 source ~/.bashrc
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 pip install webdriver-manager
+google-chrome --version
+chromedriver --version
